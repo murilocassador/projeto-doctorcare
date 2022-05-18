@@ -8,13 +8,15 @@
 
 :root {
 
-  --hue: 290;
+  --hue: 170;
   --primary-color: hsl(var(--hue), 100%, 26%);
   --secondary-headline: hsl(210, 11%, 15%);
   --secondary-paragraph: hsl(210, 9%, 31%);
 
   --brand-beige: hsl(39, 100%, 97%);
-  --brand-light: hsl(268, 23%, 89%) ;
+
+  --brand-light: hsl(calc(var(--hue)), 23%, 89%);
+
   --brand-dark: hsl(var(--hue),100%, 14%);
   --bg-light: hsl(180, 14%, 97%);
 
