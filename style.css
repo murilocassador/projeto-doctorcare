@@ -7,13 +7,15 @@
 }
 
 :root {
-  --primary-color: hsl(170, 100%, 26%);
+
+  --hue: 290;
+  --primary-color: hsl(var(--hue), 100%, 26%);
   --secondary-headline: hsl(210, 11%, 15%);
   --secondary-paragraph: hsl(210, 9%, 31%);
 
   --brand-beige: hsl(39, 100%, 97%);
-  --border-light: hsl(148, 23%, 89%);
-  --brand-dark: hsl(170,100%, 14%);
+  --brand-light: hsl(268, 23%, 89%) ;
+  --brand-dark: hsl(var(--hue),100%, 14%);
   --bg-light: hsl(180, 14%, 97%);
 
   --nav-height: 7.2rem;
@@ -131,6 +133,31 @@ section .content p {
   justify-content: center;
   gap: 3.2rem;
 }
+
+/*Custom colors */
+
+#services .card circle{
+  fill: var(--brand-light);
+}
+
+#navigation .logo path[fill*="#00856F"],
+#backToTopButton circle{
+  fill: var(--primary-color);
+}
+
+button.open-menu path[stroke*="#00856F"],
+#contact li path {
+  stroke: var(--primary-color);
+}
+
+#navigation.scroll .logo path {
+  fill: white;
+}
+
+#navigation.scroll button.open-menu path[stroke*="#00856F"]{
+  stroke: white;
+}
+
 /*=== NAVIGATION ============================*/
 
 nav {
@@ -156,16 +183,6 @@ nav.scroll {
   background: var(--primary-color);
 }
 
-nav.scroll .logo path {
-  /* acessa o SVG do logo, no child 1 (pq tem 2), no elemento path e altera a cor do preenchimento (fill) para branco*/
-  fill: white;
-}
-
-nav.scroll button path {
-  /* acessa o SVG do menu, no button, no elemento path e altera a cor da linha (stroke) para branco*/
-  stroke: white;
-}
-
 nav button {
   background: none;
   border: none;
@@ -183,7 +200,7 @@ nav button {
   content: ''; /* PRECISAMOS TER UM CONTEUDO VAZIO*/
   width: 100%; /* QUE OCUPE 100% DA LARGURA*/
   height: calc(108rem + var(--nav-height));
-  background-color: var(--border-light);
+  background-color: var(--brand-light);
   display: block;
 
   position: absolute;
@@ -217,7 +234,7 @@ nav button {
   margin-inline: auto;
 
   background-color: var(--brand-beige);
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--brand-light);
   border-radius: 0.6rem;
 
   display: flex;
@@ -358,13 +375,14 @@ body.menu-expanded button path {
 
   background: white;
 
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--brand-light);
   border-radius: 0.6rem;
 }
 
 #services .card h3 {
   margin-block: 1.6rem; /* BLOCK = CIMA E BAIXO _  INLINE = DIREITA E ESQUERDA */
 }
+
 
 /*=== ABOUT ============================*/
 #about {
@@ -457,3 +475,4 @@ footer .social-links {
   opacity: 1;
   visibility: visible;
   transform: translateY(0); /* efeito de aparecer na tela vindo de baixo */
+}
