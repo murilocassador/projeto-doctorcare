@@ -4,21 +4,60 @@ onScroll()
 function onScroll() {
   showNavOnScroll()
   showBackToTopButtonOnScroll()
+
+  activateMenuAtCurrentSection(home)
+  activateMenuAtCurrentSection(services)
+  activateMenuAtCurrentSection(about)
+  activateMenuAtCurrentSection(contact)
+}
+
+function activateMenuAtCurrentSection(section) {
+
+  //target line ( LINHA ALVO ) será onde o scroll estará (scrolly) + o tamanho visivel da tela  / (divido) por 2
+  const targetLine = scrollY + innerHeight / 2
+  
+    //verificar se a seção passou da linha
+    //quais dados vou precisar?
+  const sectionTop = section.offsetTop //.offsetTop indica o TOPO da seção.
+    //.offsetTop indica o TOPO da seção.
+  const sectionHeight = section.offsetHeight//.offsetHight para obter o tamanho total da seção específica
+
+  //o topo da seção chegou ou ultrapassou a linha alvo
+  const sectionTopReachOrPassedTargetline = targetLine >= sectionTop
+
+  //a seção termina onde?
+  const sectionEndsAt = sectionTop + sectionHeight
+
+  //o final da seção passou da linha alvo?
+  const sectionEndPassedTargetline = sectionEndsAt <= targetLine
+
+  //limite da seção
+  //Lemos: o topo da seção chegou ou passou da linha E(&&) o final da seção NÃO (!) passou da linha?
+  const sectionBoundaries =
+    sectionTopReachOrPassedTargetline && !sectionEndPassedTargetline
+
+  const sectionId = section.getAttribute('id')
+  const menuElement = document.querySelector(`.menu a[href*=${sectionId}]`)
+
+  menuElement.classList.remove('active')
+  if (sectionBoundaries) {
+    menuElement.classList.add('active')
+  }
 }
 
 function showNavOnScroll() {
   if (scrollY > 0) {
-    navigation.classList.add("scroll")
-  }else{
-    navigation.classList.remove("scroll")
+    navigation.classList.add('scroll')
+  } else {
+    navigation.classList.remove('scroll')
   }
 }
 
 function showBackToTopButtonOnScroll() {
-  if (scrollY > 400) {
-    backToTopButton.classList.add("show")
-  }else{
-    backToTopButton.classList.remove("show")
+  if (scrollY > 550) {
+    backToTopButton.classList.add('show')
+  } else {
+    backToTopButton.classList.remove('show')
   }
 }
 
