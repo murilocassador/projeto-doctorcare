@@ -296,7 +296,7 @@ body.menu-expanded .close-menu {
   transform: translateY(100%);
 }
 
-body.menu-expanded.menu {
+body.menu-expanded .menu {
   top: 0;
   left: 0;
   background: var(--primary-color);
